@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}SHOP{% endblock %}
+
+{% block content %}
+    <div class="shop-page">
+
+        <h1 class="mt-5">LET'S (S)HOP</h1>
+            <div>
+                    
+                    
+                    <div class="card-group mx-5 my-5">
+                        {% for item in items %}
+                            <a href="{% url 'item:detail' item.id %}" class="card text-decoration-none hover">
+                            <img src="{{ item.image.url }}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">{{item.Name}}</h5>
+                                <h6 class="card-title">Price: {{ item.price }}</h6>
+                                
+                            </div>
+                            </a>
+                        {% endfor %}    
+                        </div>
+                        
+                                 
+                        
+                
+            </div>
+    </div>    
+{% endblock content %}

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    SignUp/login
+{% endblock title %}
+    
+
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="login-box">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active" id="login-tab" data-bs-toggle="tab" href="#login" role="tab" aria-controls="login" aria-selected="true">Login</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="signup-tab" data-bs-toggle="tab" href="#signup" role="tab" aria-controls="signup" aria-selected="false">Sign Up</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade" id="login" role="tabpanel" aria-labelledby="login-tab">
+                        <h2>Login to Your Account</h2>
+                        <form method="post" action="{% url 'core:login' %}">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button type="submit" class="btn btn-primary">Login</button>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade" id="signup" role="tabpanel" aria-labelledby="signup-tab">
+                        <h2>Create a New Account</h2>
+                        <form method="post" action="{% url 'core:register' %}">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button type="submit" class="btn btn-primary">Sign Up</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+    
